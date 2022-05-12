@@ -15,53 +15,78 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
-  onInputChange({ target }) {
+  // Funções principais
+
+  onInputChange = ({ target }) => {
     const { name } = target;
-    const cardAttrLimit = 90;
-    const cardAttrPowerLimit = 210;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     }, () => {
-      const {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-      } = this.state;
-      const cardPowerSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
-      if (cardName === ''
-        || cardImage === ''
-        || cardDescription === ''
-        || cardAttr1 > cardAttrLimit
-        || cardAttr1 < 0
-        || cardAttr2 > cardAttrLimit
-        || cardAttr2 < 0
-        || cardAttr3 > cardAttrLimit
-        || cardAttr3 < 0
-        || cardPowerSum > cardAttrPowerLimit) {
-        return this.setState({
-          isSaveButtonDisabled: true,
-        });
-      }
-      return this.setState({
-        isSaveButtonDisabled: false,
-      });
+      this.validate();
     });
   }
 
   onSaveButtonClick = () => {
-    console.log('save button');
+    const { cards } = this.state;
+    cards.push(this.getState());
+    this.resset();
+  }
+
+  // Funções auxiliares
+
+  getState = () => Object(this.state);
+
+  validate = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    } = this.state;
+    const cardAttrLimit = 90;
+    const cardAttrPowerLimit = 210;
+    const cardPowerSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+    if (cardName === ''
+          || cardImage === ''
+          || cardDescription === ''
+          || cardAttr1 > cardAttrLimit
+          || cardAttr1 < 0
+          || cardAttr2 > cardAttrLimit
+          || cardAttr2 < 0
+          || cardAttr3 > cardAttrLimit
+          || cardAttr3 < 0
+          || cardPowerSum > cardAttrPowerLimit) {
+      return this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+    return this.setState({
+      isSaveButtonDisabled: false,
+    });
+  }
+
+  resset = () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
   }
 
   render() {
@@ -74,7 +99,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -89,7 +114,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={ hasTrunfo}
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
