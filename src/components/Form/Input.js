@@ -27,7 +27,10 @@ function Input(props) {
 }
 
 Input.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]).isRequired,
   type: PropTypes.string.isRequired,
   testId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
