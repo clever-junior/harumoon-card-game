@@ -37,9 +37,14 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
-    const { cards } = this.state;
+    const { cards, cardTrunfo } = this.state;
     cards.push(this.getState());
-    this.resset();
+    if (cardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
+    this.ressetState();
   }
 
   // Funções auxiliares
@@ -77,7 +82,7 @@ class App extends React.Component {
     });
   }
 
-  resset = () => {
+  ressetState = () => {
     this.setState({
       cardName: '',
       cardDescription: '',
