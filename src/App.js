@@ -23,11 +23,40 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
-  onInputChange = ({ target }) => {
+  onInputChange({ target }) {
     const { name } = target;
+    const cardAttrLimit = 90;
+    const cardAttrPowerLimit = 210;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+      } = this.state;
+      const cardPowerSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+      if (cardName === ''
+        || cardImage === ''
+        || cardDescription === ''
+        || cardAttr1 > cardAttrLimit
+        || cardAttr1 < 0
+        || cardAttr2 > cardAttrLimit
+        || cardAttr2 < 0
+        || cardAttr3 > cardAttrLimit
+        || cardAttr3 < 0
+        || cardPowerSum > cardAttrPowerLimit) {
+        return this.setState({
+          isSaveButtonDisabled: true,
+        });
+      }
+      return this.setState({
+        isSaveButtonDisabled: false,
+      });
     });
   }
 
@@ -50,6 +79,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
+        <h1>Adicionar nova carta</h1>
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -64,6 +94,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
+        <h1>Pré-visualização</h1>
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
