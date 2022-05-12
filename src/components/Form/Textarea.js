@@ -1,37 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Input(props) {
+function Textarea(props) {
   const {
-    type,
     testId,
     value,
     name,
     title,
+    onInputChange,
   } = props;
   return (
     <label htmlFor={ testId }>
-      { title }
-      <input
-        type={ type }
+      {title}
+      <textarea
         data-testid={ testId }
         id={ testId }
         name={ name }
         value={ value }
+        onChange={ onInputChange }
       />
     </label>
   );
 }
 
-Input.propTypes = {
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
-  type: PropTypes.string.isRequired,
+Textarea.propTypes = {
+  value: PropTypes.string.isRequired,
   testId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
-export default Input;
+export default Textarea;
