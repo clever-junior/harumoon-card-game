@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import CardList from './components/CardList';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -17,11 +18,12 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      cards: [],
+      cardList: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
   }
 
   // Funções principais
@@ -37,14 +39,29 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
-    const { cards, cardTrunfo } = this.state;
-    cards.push(this.getState());
+    const { cardTrunfo, cardList } = this.state;
+    cardList.push(this.getState());
     if (cardTrunfo) {
       this.setState({
         hasTrunfo: true,
       });
     }
     this.ressetState();
+  }
+
+  onDeleteButtonClick = ({ target: { name } }) => {
+    const { cardList } = this.state;
+    const id = Number(name);
+    if (cardList[id].cardTrunfo) {
+      this.setState({
+        hasTrunfo: false,
+        cardList: cardList.filter((card, index) => index !== id),
+      });
+    } else {
+      this.setState({
+        cardList: cardList.filter((card, index) => index !== id),
+      })      
+    }
   }
 
   // Funções auxiliares
@@ -91,6 +108,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      isSaveButtonDisabled: true,
     });
   }
 
@@ -106,6 +124,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cardList,
     } = this.state;
     return (
       <div>
@@ -123,9 +142,11 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
+
         />
         <h1>Pré-visualização</h1>
         <Card
+          id={ cardName }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -134,6 +155,13 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          isPreview
+          onDeleteButtonClick={ this.onDeleteButtonClick }
+        />
+        <h1>Todas as cartas</h1>
+        <CardList
+          cardList={ cardList }
+          onDeleteButtonClick={ this.onDeleteButtonClick }
         />
       </div>
     );
