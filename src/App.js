@@ -60,7 +60,7 @@ class App extends React.Component {
     } else {
       this.setState({
         cardList: cardList.filter((card, index) => index !== id),
-      })      
+      });
     }
   }
 
