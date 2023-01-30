@@ -2,9 +2,9 @@
 
 # Sobre o projeto
 
-**Link do Projeto
+https://clever-junior.github.io/harumoon-card-game/
 
-**Descrição
+A aplicação consiste em um formulário onde você pode adicionar uma nova carta, pré-visualizá-la e ver todas as cartas já criadas. 
 
 ## Layout web
 ![Web 1]()
