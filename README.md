@@ -13,13 +13,11 @@ A aplicação consiste em um formulário onde você pode adicionar uma nova cart
 
 # Tecnologias utilizadas
 
-## Front end
 - HTML / CSS / JS / TypeScript
 - ReactJS
 
 # Como executar o projeto
 
-## Front end web
 Pré-requisitos: npm / yarn
 
 ```bash
