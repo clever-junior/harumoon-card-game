@@ -43,5 +43,5 @@ npm start
 
 Clever Meireles Lopes Junior
 
-https://www.linkedin.com/in/clever-lopes
+ <a href="https://www.linkedin.com/in/clever-lopes/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 
