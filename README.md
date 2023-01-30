@@ -1,5 +1,7 @@
 # Harumoon Card Game 
 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/clever-junior/frontend-card-game-app/blob/main/LICENCE) 
+
 # Sobre o projeto
 
 **Link do Projeto
@@ -43,5 +45,5 @@ npm start
 
 Clever Meireles Lopes Junior
 
- <a href="https://www.linkedin.com/in/clever-lopes/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/clever-lopes/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 
