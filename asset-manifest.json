@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/harumoon-card-game/static/css/main.acf383c4.css",
+    "main.js": "/harumoon-card-game/static/js/main.6dd15919.js",
+    "index.html": "/harumoon-card-game/index.html",
+    "main.acf383c4.css.map": "/harumoon-card-game/static/css/main.acf383c4.css.map",
+    "main.6dd15919.js.map": "/harumoon-card-game/static/js/main.6dd15919.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.acf383c4.css",
+    "static/js/main.6dd15919.js"
+  ]
+}
