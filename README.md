@@ -29,10 +29,10 @@ Pré-requisitos: npm / yarn
 
 ```bash
 # clonar repositório
-git clone https://github.com/devsuperior/sds1-wmazoni
+git clone https://github.com/clever-junior/frontend-card-game-app.git
 
 # entrar na pasta do projeto front end web
-cd front-web
+cd frontend-card-game-app
 
 # instalar dependências
 npm i 
