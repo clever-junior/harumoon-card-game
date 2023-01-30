@@ -11,9 +11,6 @@ A aplicação consiste em um formulário onde você pode adicionar uma nova cart
 
 ![Web 2]()
 
-## Modelo conceitual
-![Modelo Conceitual]()
-
 # Tecnologias utilizadas
 
 ## Front end
